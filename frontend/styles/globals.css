@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #060a08; color: #e2ede4; font-family: 'Inter', sans-serif; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #060a08; }
+::-webkit-scrollbar-thumb { background: #253528; border-radius: 4px; }
+
+.font-syne { font-family: 'Syne', sans-serif; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-green text-bg font-syne font-bold text-sm tracking-wider px-6 py-3 rounded-lg hover:opacity-80 transition-opacity;
+  }
+  .btn-secondary {
+    @apply border border-border2 text-muted font-syne text-sm tracking-wider px-6 py-3 rounded-lg hover:border-green hover:text-green transition-colors;
+  }
+  .card {
+    @apply bg-card border border-border rounded-xl p-5;
+  }
+  .input {
+    @apply bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm w-full focus:outline-none focus:border-green transition-colors;
+  }
+  .label {
+    @apply text-xs text-muted tracking-widest uppercase mb-1 block;
+  }
+}
