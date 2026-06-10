@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH="/opt/homebrew/bin:$PATH"
 # CricSense — Start all services
 # Usage: bash start.sh
 
@@ -10,7 +11,7 @@ echo ""
 # 1. AI service
 echo "▶  Starting AI service (port 8000)..."
 cd "$ROOT/ai"
-conda run -n pose_env uvicorn main:app --host 0.0.0.0 --port 8000 &
+conda run -n cricsense uvicorn main:app --host 0.0.0.0 --port 8000 &
 AI_PID=$!
 
 sleep 2
