@@ -184,3 +184,23 @@ If these values are empty, CricSense keeps using local AI download URLs for demo
 - Engineered a Python FastAPI microservice using MediaPipe to perform frame-by-frame pose estimation, computing 8+ biomechanical metrics (joint angles, weight transfer, hip-shoulder separation) with benchmark comparison against professional standards.
 - Built a RESTful Node.js/Express backend with JWT authentication, MongoDB persistence and async video processing pipeline connecting the frontend to the AI service.
 - Developed a Next.js/Tailwind frontend with interactive Recharts motion graphs, color-coded benchmark reports and a per-user analysis dashboard with real-time polling.
+
+- ## Screenshots
+
+### Landing Page
+![Landing Page](docs/screenshots/Landing%20Page.png)
+
+### Upload Video
+![Upload Video](docs/screenshots/Upload.png)
+
+### Dashboard
+![Dashboard](docs/screenshots/Dashboard.png)
+
+### Analysis Results
+![Analysis Results](docs/screenshots/Analyzed%20Results.png)
+
+### Motion Graphs
+![Motion Graphs](docs/screenshots/Graphs.png)
+
+### Analyzed Video
+![Analyzed Video](docs/screenshots/Analyzed.png)
