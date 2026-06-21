@@ -204,3 +204,12 @@ If these values are empty, CricSense keeps using local AI download URLs for demo
 
 ### Analyzed Video
 ![Analyzed Video](docs/screenshots/Analyzed.png)
+
+## Documentation
+
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Project Documentation](docs/DOCUMENTATION.md)
+
+## Architecture Diagram
+
+![Architecture Diagram](docs/architecture.svg)
