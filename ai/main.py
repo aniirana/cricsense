@@ -5,6 +5,15 @@ import tempfile
 import os
 import shutil
 
+import mediapipe as mp
+
+print("=" * 50)
+print("MediaPipe module:", mp)
+print("MediaPipe file:", getattr(mp, "__file__", None))
+print("MediaPipe version:", getattr(mp, "__version__", None))
+print("Has solutions:", hasattr(mp, "solutions"))
+print("=" * 50)
+
 from analyzers.batting import analyze_batting
 from analyzers.bowling import analyze_bowling
 
