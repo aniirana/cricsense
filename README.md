@@ -85,7 +85,7 @@ pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-AI API runs at → http://localhost:8000
+AI API runs at → https://cricsense-ai-slvx.onrender.com
 
 ---
 
@@ -104,7 +104,7 @@ npm install
 npm run dev
 ```
 
-Backend runs at → http://localhost:4000
+Backend runs at → https://cricsense-ytl3.onrender.com
 
 ---
 
@@ -120,7 +120,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs at → http://localhost:3000
+Frontend runs at → https://cricsense.vercel.app/
 
 ---
 
