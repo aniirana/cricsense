@@ -5,40 +5,45 @@ import tempfile
 import os
 import shutil
 
-import mediapipe as mp
-
-print("=" * 50)
-print("MediaPipe module:", mp)
-print("MediaPipe file:", getattr(mp, "__file__", None))
-print("MediaPipe version:", getattr(mp, "__version__", None))
-print("Has solutions:", hasattr(mp, "solutions"))
-print("=" * 50)
-
 from analyzers.batting import analyze_batting
 from analyzers.bowling import analyze_bowling
 
 app = FastAPI(title="CricSense AI API", version="1.0.0")
 
-# CORS
+# -------------------------
+# CORS CONFIG (PRODUCTION FIX)
+# -------------------------
+
+CLIENT_URL = os.getenv("CLIENT_URL")
+
+allow_origins = [
+    "http://localhost:3000",
+]
+
+if CLIENT_URL:
+    allow_origins.append(CLIENT_URL)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        os.getenv("CLIENT_URL", "http://localhost:3000")
-    ],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# -------------------------
+# ROUTES
+# -------------------------
+
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "CricSense AI"}
 
+
 @app.post("/analyze")
 async def analyze(video: UploadFile = File(...), mode: str = Form(...)):
     if mode not in ("bat", "bowl"):
-        raise HTTPException(400, "mode must be 'bat' or 'bowl'")
+        raise HTTPException(status_code=400, detail="mode must be 'bat' or 'bowl'")
 
     suffix = os.path.splitext(video.filename)[1] or ".mp4"
 
@@ -54,11 +59,13 @@ async def analyze(video: UploadFile = File(...), mode: str = Form(...)):
             result = analyze_batting(inp, outp, csv_path)
         else:
             result = analyze_bowling(inp, outp, csv_path)
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
     finally:
         if os.path.exists(inp):
-            os.unlink(inp)
+            os.remove(inp)
 
     return {
         "mode": mode,
@@ -80,7 +87,6 @@ def download_video(path: str):
     return FileResponse(
         path,
         media_type="video/mp4",
-        
         filename="analyzed.mp4",
     )
 
